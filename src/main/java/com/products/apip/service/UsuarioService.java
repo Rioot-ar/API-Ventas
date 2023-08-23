@@ -1,5 +1,7 @@
-package com.products.apip.Usuario;
+package com.products.apip.service;
 
+import com.products.apip.repository.UsuarioRepository;
+import com.products.apip.entity.Usuario;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;

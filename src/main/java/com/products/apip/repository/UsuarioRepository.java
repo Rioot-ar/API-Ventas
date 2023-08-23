@@ -1,5 +1,6 @@
-package com.products.apip.Usuario;
+package com.products.apip.repository;
 
+import com.products.apip.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

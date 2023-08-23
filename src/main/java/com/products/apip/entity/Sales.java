@@ -1,10 +1,14 @@
-package com.products.apip.Usuario;
+package com.products.apip.entity;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,12 +17,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Usuario {
+@Table(name="ventas")
+public class Sales {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_usuario;
+    private long VentasId;
     @Basic
-    private String nombre;
-    private String contraseña;
-    private String rol;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha;
+    private String cliente;    
+    private int total;   
+    private String metodo_pago;
 }
