@@ -1,5 +1,6 @@
 package com.products.apip.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -8,7 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,5 +31,9 @@ public class Subcategory {
         
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fk_categoria")
-    private Category category;        
+    private Category category;    
+    
+    @OneToMany(mappedBy = "subcategory",cascade = CascadeType.ALL,orphanRemoval=true)
+    @JsonIgnore
+    private List<Products> products;    
 }
