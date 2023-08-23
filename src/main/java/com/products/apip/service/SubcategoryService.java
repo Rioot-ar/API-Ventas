@@ -1,6 +1,8 @@
 package com.products.apip.service;
 
+import com.products.apip.entity.Category;
 import com.products.apip.entity.Subcategory;
+import com.products.apip.repository.CategoryRepository;
 import com.products.apip.repository.SubcategoryRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +14,11 @@ import org.springframework.stereotype.Service;
 public class SubcategoryService {
     
     private final SubcategoryRepository subRep;
+    private final CategoryRepository catRep;
     
     public void createSubcategory(Subcategory subc){
+        Category cat = catRep.findById(subc.getCategory().getIdCategory()).orElse(null);
+        subc.setCategory(cat);
         subRep.save(subc);
     }
     
